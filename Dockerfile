@@ -10,6 +10,9 @@ RUN apk --no-cache add nodejs npm
 
 # Install Ruby 3.0
 RUN apk --no-cache add ruby ruby-dev
+# Install a whole bunch of other things we're going to need at some point...
+RUN apk --no-cache add libssl1.1 libpq imagemagick ffmpeg jemalloc \
+        icu-libs libidn yaml file ca-certificates tzdata readline gcc tini make
 
 RUN npm install -g npm@latest && \
 	npm install -g yarn && \
@@ -49,9 +52,7 @@ RUN echo "Etc/UTC" > /etc/localtime && \
 	#gem install bundler && \
 	#rm -rf /var/cache && \
 	#rm -rf /var/lib/apt/lists/*
-RUN apk --no-cache add libssl1.1 libpq imagemagick ffmpeg jemalloc \
-        icu-libs libidn yaml file ca-certificates tzdata readline gcc tini make && \
-	ln -s /opt/mastodon /mastodon && \
+RUN ln -s /opt/mastodon /mastodon && \
 	gem install bundler && \
 	rm -rf /var/cache && \
 	rm -rf /var/lib/apt/lists/*
