@@ -9,7 +9,7 @@ SHELL ["/bin/bash", "-c"]
 RUN apk --no-cache add nodejs npm
 
 # Install Ruby 3.0
-RUN apk --no-cache add ruby
+RUN apk --no-cache add ruby ruby-dev
 
 RUN npm install -g npm@latest && \
 	npm install -g yarn && \
