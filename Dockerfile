@@ -50,7 +50,7 @@ RUN echo "Etc/UTC" > /etc/localtime && \
 	#rm -rf /var/cache && \
 	#rm -rf /var/lib/apt/lists/*
 RUN apk --no-cache add libssl1.1 libpq imagemagick ffmpeg jemalloc \
-        icu-libs libidn yaml file ca-certificates tzdata readline gcc tini && \
+        icu-libs libidn yaml file ca-certificates tzdata readline gcc tini make && \
 	ln -s /opt/mastodon /mastodon && \
 	gem install bundler && \
 	rm -rf /var/cache && \
