@@ -13,7 +13,7 @@ RUN apk --no-cache add ruby ruby-dev
 # Install a whole bunch of other things we're going to need at some point...
 RUN apk --no-cache add libssl1.1 libpq imagemagick ffmpeg \
         icu-libs libidn yaml file ca-certificates tzdata readline gcc tini make \
-        git icu-dev libidn-dev libpq-dev shared-mime-info linux-headers
+        git icu-dev libidn-dev libpq-dev shared-mime-info musl-dev
 
 RUN npm install -g npm@latest && \
     npm install -g yarn && \
