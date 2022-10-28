@@ -13,7 +13,7 @@ RUN apk --no-cache add ruby ruby-dev
 # Install a whole bunch of other things we're going to need at some point...
 RUN apk --no-cache add libssl1.1 libpq imagemagick ffmpeg \
         icu-libs libidn yaml file ca-certificates tzdata readline gcc tini make \
-        git icu-dev libidn-dev libpq-dev shared-mime-info musl-dev zlib-dev g++
+        git icu-dev libidn-dev libpq-dev shared-mime-info musl-dev zlib-dev g++ python3
 
 RUN npm install -g npm@latest && \
     npm install -g yarn && \
@@ -35,10 +35,16 @@ ENV PATH="${PATH}:/opt/mastodon/bin"
 ARG UID=991
 ARG GID=991
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
+#RUN echo "Etc/UTC" > /etc/localtime && \
+    #apk --no-cache add whois wget && \
+    #addgroup --gid $GID mastodon && \
+    #useradd -m -u $UID -g $GID -d /opt/mastodon mastodon && \
+    #echo "mastodon:$(head /dev/urandom | tr -dc A-Za-z0-9 | head -c 24 | mkpasswd -s -m sha-256)" | chpasswd
+
 RUN echo "Etc/UTC" > /etc/localtime && \
     apk --no-cache add whois wget && \
     addgroup --gid $GID mastodon && \
-    useradd -m -u $UID -g $GID -d /opt/mastodon mastodon && \
+    adduser -u $UID -h /opt/mastodon mastodon mastodon&& \
     echo "mastodon:$(head /dev/urandom | tr -dc A-Za-z0-9 | head -c 24 | mkpasswd -s -m sha-256)" | chpasswd
 
 # Install mastodon runtime deps
