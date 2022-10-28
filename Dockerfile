@@ -64,7 +64,7 @@ RUN ln -s /opt/mastodon /mastodon && \
 
 # Copy over mastodon source, and dependencies from building, and set permissions
 COPY --chown=mastodon:mastodon . /opt/mastodon
-COPY --from=build-dep --chown=mastodon:mastodon /opt/mastodon /opt/mastodon
+#COPY --from=build-dep --chown=mastodon:mastodon /opt/mastodon /opt/mastodon
 
 # Run mastodon services in prod mode
 ENV RAILS_ENV="production"
