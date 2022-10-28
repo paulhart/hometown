@@ -32,8 +32,8 @@ RUN cd /opt/mastodon && \
 ENV PATH="${PATH}:/opt/mastodon/bin"
 
 # Create the mastodon user
-ARG UID=991
-ARG GID=991
+ARG UID=992
+ARG GID=992
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 #RUN echo "Etc/UTC" > /etc/localtime && \
     #apk --no-cache add whois wget && \
@@ -44,7 +44,7 @@ SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 RUN echo "Etc/UTC" > /etc/localtime && \
     apk --no-cache add whois wget && \
     addgroup --gid $GID mastodon && \
-    adduser -u $UID -h /opt/mastodon mastodon mastodon&& \
+    adduser -u $UID -G mastodon -h /opt/mastodon mastodon && \
     echo "mastodon:$(head /dev/urandom | tr -dc A-Za-z0-9 | head -c 24 | mkpasswd -s -m sha-256)" | chpasswd
 
 # Install mastodon runtime deps
