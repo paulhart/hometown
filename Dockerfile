@@ -17,7 +17,7 @@ RUN apk --no-cache add libssl1.1 libpq imagemagick ffmpeg \
 
 RUN npm install -g npm@latest && \
     npm install -g yarn && \
-    gem install bundler && \
+    gem install bundler
 
 COPY Gemfile* package.json yarn.lock /opt/mastodon/
 
