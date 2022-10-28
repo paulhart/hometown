@@ -98,6 +98,8 @@ gem 'json-ld'
 gem 'json-ld-preloaded', '~> 3.2'
 gem 'rdf-normalize', '~> 0.5'
 
+gem 'net-smtp', '-> 0.3.2'
+
 group :development, :test do
   gem 'fabrication', '~> 2.28'
   gem 'fuubar', '~> 2.5'
