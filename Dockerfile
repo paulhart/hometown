@@ -11,7 +11,7 @@ RUN apk --no-cache add nodejs npm
 # Install Ruby 3.0
 RUN apk --no-cache add ruby ruby-dev
 # Install a whole bunch of other things we're going to need at some point...
-RUN apk --no-cache add libssl1.1 libpq imagemagick ffmpeg jemalloc \
+RUN apk --no-cache add libssl1.1 libpq imagemagick ffmpeg \
         icu-libs libidn yaml file ca-certificates tzdata readline gcc tini make
 
 RUN npm install -g npm@latest && \
@@ -45,7 +45,7 @@ RUN echo "Etc/UTC" > /etc/localtime && \
 # Install mastodon runtime deps
 #RUN apt-get update && \
   #apt-get -y --no-install-recommends install \
-	  #libssl1.1 libpq5 imagemagick ffmpeg libjemalloc2 \
+	  #libssl1.1 libpq5 imagemagick ffmpeg \
 	  #libicu66 libidn11 libyaml-0-2 \
 	  #file ca-certificates tzdata libreadline8 gcc tini apt-utils && \
 	#ln -s /opt/mastodon /mastodon && \
