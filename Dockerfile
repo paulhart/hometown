@@ -44,7 +44,7 @@ SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 RUN echo "Etc/UTC" > /etc/localtime && \
     apk --no-cache add whois wget && \
     addgroup --gid $GID mastodon && \
-    adduser -u $UID -G mastodon -D -h /opt/mastodon mastodon #&& \
+    adduser -u $UID -G mastodon -D -h /opt/mastodon mastodon
     #echo "mastodon:$(head /dev/urandom | tr -dc A-Za-z0-9 | head -c 24 | mkpasswd -s -m sha-256)" | chpasswd
 
 # Install mastodon runtime deps
